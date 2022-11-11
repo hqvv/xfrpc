@@ -9,11 +9,6 @@ if(NOT LibEvent_FOUND)
   message(FATAL_ERROR "libevent2 not found!")
 endif(NOT LibEvent_FOUND)
 
-find_package(OpenSSL)
-if(NOT OPENSSL_FOUND)
-  message(FATAL_ERROR "OpenSSL not found!")
-endif(NOT OPENSSL_FOUND)
-
 find_package(JSON-C REQUIRED)
 include_directories(${JSON-C_INCLUDE_DIR})
 
@@ -28,7 +23,6 @@ set(src_xfrpc
 	debug.c
 	zip.c
 	commandline.c
-	crypto.c
 	fastpbkdf2.c
 	utils.c
 	common.c
@@ -40,8 +34,6 @@ set(src_xfrpc
 	)
 	
 set(libs
-	ssl
-	crypto
 	event
 	z
 	m
